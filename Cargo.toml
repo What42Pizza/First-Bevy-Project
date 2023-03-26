@@ -1,0 +1,26 @@
+[package]
+name = "first_bevy_project"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+bevy = {version = "0.10", features = ["dynamic_linking"]}
+bevy_framepace = {git = "https://github.com/alice-i-cecile/bevy_framepace.git", branch = "patch-1"}
+smart-default = "0.6"
+num-traits = "0.2"
+rand = "0.8"
+num = "0.4"
+derive_deref = "1.1"
+
+# Enable a small amount of optimization in debug mode
+[profile.dev]
+opt-level = 1
+
+# Enable high optimizations for dependencies (incl. Bevy), but not for our code:
+[profile.dev.package."*"]
+opt-level = 3
+
+#[profile.release]
+#lto = "thin"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
